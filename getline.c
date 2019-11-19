@@ -11,7 +11,7 @@ int _strlen(char *s);
  * @stream: stream where text resides
  * Description: 4. Simple shell 0.1.1
  * Return: see below
- * 1. Upon success, number of chars read including delimiter ('\n') but not null byte
+ * 1. Upon success, number of chars read including delimiter ('\n') but not null
  * 2. Upon fail, -1 to read a line including EOF
  */
 ssize_t getline_jjsh(char **lineptr, size_t *n, FILE *stream)
