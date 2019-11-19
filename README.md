@@ -47,7 +47,7 @@ int main(int argc, char **argv, char **env);
 
 ![echo$PATH](https://i.imgur.com/hK9iAqH.png)
 
-The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.
+    The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.
 ```C
 int main(int argc, char **argv)
 {
@@ -75,9 +75,9 @@ int main(int argc, char **argv)
 13. What is **EOF** / “end-of-file”?  
 **EOF** is a macro in the standard input/output header file in C programming.  It's used to mark the end of a file or the last byte of data was read.  Its return value is -1 to indicate that it reached the end of the input stream.  In Unix, the keyboard command for **EOF** is Ctrl+D and in Windows, it's Ctrl+Z.  
 
-The **getline** function reads an entire line from stream and stores it in a buffer.  In turn, the buffer address is stored in a pointer.  If successful, it returns the number of characters read including the new line but not the null byte.  If fail due to an error or **EOF** was reached, then it returns -1.  
+    The **getline** function reads an entire line from stream and stores it in a buffer.  In turn, the buffer address is stored in a pointer.  If successful, it returns the number of characters read including the new line but not the null byte.  If fail due to an error or **EOF** was reached, then it returns -1.  
 
-Similarly, the **strtok** function reads a string and delimits it.  Once delimited, the string is broken up into "tokens" with a null byte at the end of each.  If successful, it returns a pointer to the next token, but if fail, it returns NULL.  
+    Similarly, the **strtok** function reads a string and delimits it.  Once delimited, the string is broken up into "tokens" with a null byte at the end of each.  If successful, it returns a pointer to the next token, but if fail, it returns NULL.  
 
 # Specifications #
 0. **README**, **man**, **AUTHORS**  
@@ -100,6 +100,14 @@ Similarly, the **strtok** function reads a string and delimits it.  Once delimit
 	6. Prints an error message and display the prompt again if an executable isn't found.  
 	7. Handle errors.  
 	8. Handle **EOF**.  
+
+5. Handle command lines with arguments.
+
+7. Handle the **PATH**.
+
+8. Implement the **exit** built-in, that exits the shell.
+
+11. Implement the **env** built-in, that prints the current environment.  
 
 # Example #
 
