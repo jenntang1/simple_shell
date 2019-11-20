@@ -47,7 +47,7 @@ int main(int argc, char **argv, char **env);
 
 ![echo$PATH](https://i.imgur.com/hK9iAqH.png)
 
-    The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.
+    The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.  
 ```C
 int main(int argc, char **argv)
 {
@@ -101,13 +101,13 @@ int main(int argc, char **argv)
 	7. Handle errors.  
 	8. Handle **EOF**.  
 
-5. Handle command lines with arguments.
+4. Handle command lines with arguments.  
 
-7. Handle the **PATH**.
+5. Handle the **PATH**.  
 
-8. Implement the **exit** built-in, that exits the shell.
+6. Implement the **exit** built-in, that exits the shell.  
 
-11. Implement the **env** built-in, that prints the current environment.  
+7. Implement the **env** built-in, that prints the current environment.  
 
 # Example #
 
