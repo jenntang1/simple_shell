@@ -1,5 +1,5 @@
 # Simple Unix Command Line Interpreter #
-![simpleshell](https://i.imgur.com/Db0vO3g.png)
+![simpleshell](https://i.imgur.com/hz1XxTx.png)
 
 # Overview #
 The program codes contained in this repository are used to implement a simple command line interpreter (aka simple shell).  
