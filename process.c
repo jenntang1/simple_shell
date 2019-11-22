@@ -3,7 +3,7 @@
 /**
  * process - function for creating & executing processes
  * @argv: arguments
- * Return: 
+ * Return:
  */
 int process(char **argv)
 {
@@ -14,7 +14,7 @@ int process(char **argv)
 	/* fork to create a child process */
 	child = fork();
 	/* if fork fails, print error */
-	if (child = -1)
+	if (child == -1)
 	{
 		perror("Error");
 		exit(EXIT_FAILURE);
@@ -33,8 +33,7 @@ int process(char **argv)
 	}
 	else /* parent process will wait */
 	{
-		do
-		{
+		do {
 			pid = waitpid(child, &stat, WUNTRACED);
 			if (pid == -1)
 			{
@@ -43,7 +42,7 @@ int process(char **argv)
 				return (-1);
 			}
 		}
-		while (!WIFEXITED(stat));
+		while (!WIFEXITED(stat))
 		exit(EXIT_SUCCESS);
 	}
 	return (1);
