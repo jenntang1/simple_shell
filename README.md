@@ -45,9 +45,10 @@ int main(int argc, char **argv, char **env);
 10. How does the shell use the **PATH** to find the programs?  
 **PATH** is an environment variable that produces a colon delimited list of directories when the command **echo $PATH** is executed (see example below).  Executable files for running applications and commands are stored in different paths.  For example, the executable file for the **ls -l** command is stored in /bin which stores user utilities related to directory navigation and file management.  The **-l** is an optional flag to additionally list file types, permissions, hard links, owner, group, size, last-modified date and filename.  If a user wants to use an executable file and it's stored in **PATH**, then, the user only needs to type the file name on the command line to find it.  If it's not in **PATH**, then the user needs to type the absolute path.  
 
-![echo$PATH](https://i.imgur.com/hK9iAqH.png)
+![echo$PATH](https://i.imgur.com/hK9iAqH.png)  
 
     The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.  
+
 ```C
 int main(int argc, char **argv)
 {
