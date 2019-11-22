@@ -1,6 +1,4 @@
 #include "simpleshell.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * *_strdup - function that duplicates a string

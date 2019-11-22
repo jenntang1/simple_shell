@@ -7,7 +7,6 @@
  * @n: num of chars
  * Return: 0 if same non 0 if not
  */
-
 int _strncmp(char *s1, char *s2, int n)
 {
 	int i = 0;
@@ -28,14 +27,14 @@ int _strncmp(char *s1, char *s2, int n)
  * @var: PATH
  * Return: memory address of environ
  */
-char getenviron(char *var)
+char *getenviron(char *var)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; environ[i] != NULL; i++);
+	while (__environ[i++]);
 	{
-		if (_strncmp(environ[i], var, _strlen(var)) == 0)
-			return (&environ[i]);
+		if (_strncmp(__environ[i], var, _strlen(var)) == 0)
+			return (__environ[i]);
 		else
 			perror("Error");
 	}
