@@ -1,21 +1,11 @@
 #include "simpleshell.h"
 
-
-int main(int argc,char ** argv, char **env)
-{
-	char *string = "Hello";
-
-	pathfinder(string);
-
-	return (0);
-}
-
 /**
- * pathfinder - function that finds the 
- * @line: 
- * Return: 
+ * pathfinder - function that finds the
+ * @line:
+ * Return:
  */
-void pathfinder(char *line)
+char *pathfinder(char *line)
 {
 	char *path = NULL;
 	int i = 0, j = 0;
@@ -24,11 +14,11 @@ void pathfinder(char *line)
 	char *str2 = line;
 	char *updpath = NULL;
 
-	updpath = malloc(sizeof(char) * 100);
-/*	if (updpath == NULL)
-		return (NULL); */
+	updpath = malloc(sizeof(char) * 1024);
+	if (updpath == NULL)
+		return (NULL);
 	path = _strdup(getenviron("PATH"));
-	while (tokens != NULL)
+	while (token_paths[i] != NULL)
 	{
 		*tokens = strtok(path, ":");
 		token_paths[i] = *tokens;
@@ -41,6 +31,8 @@ void pathfinder(char *line)
 		_strcat(updpath, "/");
 		_strcat(updpath, str2);
 		_strcat(updpath, "\0");
-		printf("%s\n", updpath);
+		if (access(updpath, X_OK) == 0)
+			break;
 	}
+	return (updpath);
 }

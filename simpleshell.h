@@ -23,6 +23,6 @@ int _strlen(char *s);
 char *_memcpy(char *dest, char *src, unsigned int n);
 char *getline_helper(char *line);
 int exit_helper(char **args);
-void pathfinder(char *line);
+char *pathfinder(char *line);
 
 #endif /* SIMPLESHELL_H */

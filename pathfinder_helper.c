@@ -11,11 +11,9 @@ int _strncmp(char *s1, char *s2, int n)
 {
 	int i = 0;
 
-	while (i < n)
+	while (i < n && (s1[i] != '\0'))
 	{
-		if (s1[i] < s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] > s2[i])
+		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 		i++;
 	}
@@ -31,11 +29,12 @@ char *getenviron(char *var)
 {
 	int i = 0;
 
-	while (__environ[i++]);
+	while (__environ[i] != NULL)
 	{
 		if (_strncmp(__environ[i], var, _strlen(var)) == 0)
 			return (__environ[i]);
-		else
-			perror("Error");
+		if (__environ[i] == NULL)
+			return (NULL);
+		i++;
 	}
 }
