@@ -24,5 +24,6 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 char *getline_helper(char *line);
 int exit_helper(char **args);
 char *pathfinder(char *line);
+char **_printenv(char **str);
 
 #endif /* SIMPLESHELL_H */
