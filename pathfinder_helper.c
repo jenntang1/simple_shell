@@ -5,7 +5,7 @@
  * @s1: string
  * @s2: string
  * @n: num of chars
- * Return: 0 if same non 0 if not
+ * Return: 0 if same, non 0 if not
  */
 int _strncmp(char *s1, char *s2, int n)
 {
@@ -21,7 +21,7 @@ int _strncmp(char *s1, char *s2, int n)
 }
 
 /**
- * getenviron - function to get the PATH in environ
+ * getenviron - function to get the PATH
  * @var: PATH
  * Return: memory address of environ
  */
