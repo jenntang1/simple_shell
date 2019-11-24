@@ -1,9 +1,9 @@
 #include "simpleshell.h"
 
 /**
- * pathfinder - function that finds the
- * @line:
- * Return:
+ * pathfinder - function that finds the path
+ * @line: command
+ * Return: path of the command
  */
 char *pathfinder(char *line)
 {
