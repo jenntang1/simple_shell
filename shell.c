@@ -11,7 +11,7 @@ int main(int argc, char **argv, char **env)
 {
 	pid_t child, pid;
 	int stat;
-	char prompt;
+	char *prompt;
 
 	while (1)
 	{
@@ -48,5 +48,5 @@ int main(int argc, char **argv, char **env)
 			exit(EXIT_SUCCESS);
 		}
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
