@@ -9,7 +9,7 @@ char strtok_helper(char *line)
 {
 	char delim[] = " \t";
 	char *tok = strtok(line, delim);
-	
+
 	while (tok != NULL)
 		tok = strtok(NULL, delim);
 	return (tok);
