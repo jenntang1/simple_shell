@@ -3,9 +3,10 @@
 /**
  * execute - function that executes a program
  * @argv: arguments
+ * @line: command
  * Return: 0
  */
-int execute(char **argv)
+int execute(char **argv, char *line)
 {
 	pid_t child, pid;
 	int stat;
@@ -19,14 +20,14 @@ int execute(char **argv)
 	}
 	if (child == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(list_t updpath->str, *line, NULL) == -1)
 		{
 			perror("Error");
 			exit(EXIT_FAILURE);
 			return (-1);
 		}
 		else
-		execve(argv[0], argv, NULL);
+			execve(list_t updpath->str, *line, NULL);
 	}
 	else
 	{
