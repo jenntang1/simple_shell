@@ -2,7 +2,7 @@
 ![simpleshell](https://i.imgur.com/hz1XxTx.png)
 
 # Overview #
-The program codes contained in this repository are used to implement a simple command line interpreter (aka simple shell).  
+The program codes contained in this repository are used to implement a simple command line interpreter (simple shell).  
 
 # Background #
 0. Who designed and implemented the original Unix operating system?  
@@ -15,18 +15,18 @@ Thompson also wrote the first version of the Unix shell.  The first version was 
 Additionally, Thompson invented the B programming language for Unix shell.  Later, Dennis Ritchie rewrote B programming language into a higher-leverl language known today as C.  
 
 3. Who is Ken Thompson?  
-Thompson pioneered computer science while at Bell Labs in the 1960s.  It's where he invented the original Unix operating system and then, B programming language to partner with.  Interestingly, the first program written in the first version of Unix was a chess game program.  Thompson worked collaboratively with Ritchie to further develop the Unix operating system.  
+Thompson pioneered computer science while at Bell Labs in the 1960s.  It's where he invented the original Unix operating system and then, B programming language.  Interestingly, the first program written in the first version of Unix was a chess game.  Thompson worked collaboratively with Ritchie to further develop the Unix operating system.  
 
 4. How does a shell work?  
 Shell is a command-line interpreter that provides user interface for Unix operating systems.  Users interacts with the shell using a terminal emulator or serial hardware connections.  The shell takes user commands and passes them to the underlying operating system to execute.  In the shell, there are configuration files containing commands.  These files set the variables used to find executables, control shell behavior, etc.  
 
 5. What is a **pid** and a **ppid**?  
-Every program loaded and started in the operating system is a process.  Every process has a unique id (aka **pid**) attached to it.  The **pid** is used by functions and system calls to interact and manipulate other processes.  Every **pid** has a parent id (aka **ppid** that started it all which is shown in the diagram below.  In order to retrieve the pid or ppid for a current process, use command **getpid** and **getppid** respectively.  
+Every program loaded and started in the operating system is a process.  Every process has a unique id known as the process id (**pid**) attached to it.  The **pid** is used by functions and system calls to interact and manipulate other processes.  Every **pid** has a parent id (**ppid**).  In order to retrieve the pid or ppid for a current process, use functions **getpid** and **getppid** respectively.  The diagram below shows the lineage of these processes.  
 
 ![5. What are PID and PPID?](https://i.imgur.com/hpsCKIP.png)
 
 6. How to manipulate the environment of the current process?  
-The environment is an array of strings pointed to by global variable, **environ** defined in the unistd header file.  These strings are formatted as such: var=value, where var is the variable name and value is the value.  Essentially, these strings are environment variables used to provide user information to programs such as name of logged-in user or user's login directory.  Additionally, these variables could have been imported from a parent process.  A full list if these avariables could be displayed with the **env** or **printenv** command.  Additionally, the user could use **getenv** to search and obtain a specific environment variable.  
+The environment is an array of strings pointed to by global variable, **environ** defined in the unistd header file.  These strings are formatted as such: var=value, where var is the variable name and value is the value.  Essentially, these strings are environment variables used to provide user information to programs such as name of logged-in user or user's login directory.  Additionally, these variables could have been imported from a parent process.  A full list if these variables could be displayed with the **env** or **printenv** command.  Additionally, the user could use **getenv** to search and obtain a specific environment variable.  
 
 7. What is the difference between a function and a system call?  
 A function is used in a program to make a request to perform a specific task.  A system call is a request to the kernal to access a resource.  
@@ -35,7 +35,7 @@ A function is used in a program to make a request to perform a specific task.  A
 The system call, **fork** could be used to create a new process that's a duplicate of the parent process called a child process.  Both the child process and parent process will continue to run but with different stacks, datas and heaps.  If the return value of **fork** is 0, then it's the child process.  If the return value is 1, then it's the parent process.  
 
 9. What are the three prototypes of main?  
-The main function is the entry point to any program and it's when the operating system passes control to it.  The following are three prototypes of a main function that differs in their parameters.  
+The main function is the entry point to any program and it's where the operating system passes control to it.  The following are three prototypes of a main function that differs in their parameters.  
 ```C
 int main(void);
 int main(int argc, char **argv);
@@ -43,12 +43,12 @@ int main(int argc, char **argv, char **env);
 ```
 
 10. How does the shell use the **PATH** to find the programs?  
-**PATH** is an environment variable that produces a colon delimited list of directories when the command **echo $PATH** is executed (see example below).  Executable files for running applications and commands are stored in different paths.  For example, the executable file for the **ls -l** command is stored in /bin which stores user utilities related to directory navigation and file management.  The **-l** is an optional flag to additionally list file types, permissions, hard links, owner, group, size, last-modified date and filename.  If a user wants to use an executable file and it's stored in **PATH**, then, the user only needs to type the file name on the command line to find it.  If it's not in **PATH**, then the user needs to type the absolute path.  
-
-    The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.  
+**PATH** is an environment variable that produces a colon delimited list of directories when the command **echo $PATH** is executed (see example below).  Executable files for running applications and commands are stored in different paths.  For example, the executable file for the **ls -l** command is stored in /bin/ls which stores user utilities related to directory navigation and file management.  The **-l** is an optional argument that lists file types, permissions, hard links, owner, group, size, last-modified date and filename.  If a user wants to use an executable file and it's stored in **PATH**, then, the user only needs to type the file name on the command line to find it.  
 
 ![echo$PATH](https://i.imgur.com/hK9iAqH.png)  
 
+    The **stat** system call gets the status of a file.  If successful, it returns a zero but if fail, it returns -1.  For example, an user could run the following main function to obtain the status of the **ls** command file.  
+  
 ```C
 int main(int argc, char **argv)
 {
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 ![stat](https://i.imgur.com/HPE5nuP.png)
 
 11. How to execute another program with the **execve** system call?  
-**execve** is a system call that executes another program with the current process' memory.  Essentially, it replaces the current process, therefore, upon success, it returns nothing.  But upon fail, it returns -1.  
+**execve** is a system call that executes another program with the current process' memory.  Essentially, it replaces the current process image with new ones.  Upon success, it returns nothing and upon fail, it returns -1.  
 
 12. How to suspend the execution of a process until one of its children terminates?  
 **wait** is a system call that suspends execution of a process until its children terminates.  It allows the operating system to release the resources associated with the children.  If **wait** isn't called, then the children will be in a zombie state that still fills a space in the kernel.  Upon success, it returns the pid of the terminated child and upon fail, it returns -1.  
@@ -76,9 +76,9 @@ int main(int argc, char **argv)
 13. What is **EOF** / “end-of-file”?  
 **EOF** is a macro in the standard input/output header file in C programming.  It's used to mark the end of a file or the last byte of data was read.  Its return value is -1 to indicate that it reached the end of the input stream.  In Unix, the keyboard command for **EOF** is Ctrl+D and in Windows, it's Ctrl+Z.  
 
-    The **getline** function reads an entire line from stream and stores it in a buffer.  In turn, the buffer address is stored in a pointer.  If successful, it returns the number of characters read including the new line but not the null byte.  If fail due to an error or **EOF** was reached, then it returns -1.  
+    The **getline** function reads an entire line from stream and stores it in a buffer.  In turn, the buffer address is stored in a pointer.  Upon success, it returns the number of characters read including the new line but not the null byte.  Upon fail, due to an error or **EOF** was reached, then it returns -1.  
 
-    Similarly, the **strtok** function reads a string and delimits it.  Once delimited, the string is broken up into "tokens" with a null byte at the end of each.  If successful, it returns a pointer to the next token, but if fail, it returns NULL.  
+    Similarly, the **strtok** function reads a string and delimits it.  Once delimited, the string is broken up into "tokens" with a null byte at the end of each.  Upon success, it returns a pointer to the next token, but upon fail, it returns NULL.  
 
 # Specifications #
 0. **README**, **man**, **AUTHORS**  
@@ -109,6 +109,11 @@ int main(int argc, char **argv)
 6. Implement the **exit** built-in, that exits the shell.  
 
 7. Implement the **env** built-in, that prints the current environment.  
+
+# Flowchart #
+The work flow of the simple shell relies on helper functions called in the main function.  The main function will first call write to display the prompt.  The read line helper function will read the single world command from the command line.  Next, the parse line helper function will match the command to a directory in PATH.  If found, it will fork a child process and use execve to execute the program.  If not found, then it's a built-in command that doesn't need a new process and will be executed immediately.  Either way, the simple shell will display an output and exit.  
+
+![flowchart](https://i.imgur.com/nSQaaQj.jpg)
 
 # Example #
 
@@ -175,4 +180,3 @@ man 5 environ
 # Authors #
 Jeremy Bedolla <1106@holbetonschool.com>  
 Jennifer Tang <1039@holbertonschool.com>  
-
