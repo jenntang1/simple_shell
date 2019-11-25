@@ -13,8 +13,10 @@ char *pathfinder(char *line)
 	char *token_paths[100];
 	char *str2 = line;
 	char *updpath = NULL;
+	list_t *updpath_t;
 
-	updpath = malloc(sizeof(char) * 1024);
+	updpath_t = malloc(sizeof(list_t));
+
 	if (updpath == NULL)
 		return (NULL);
 	path = _strdup(getenviron("PATH"));
@@ -34,5 +36,8 @@ char *pathfinder(char *line)
 		if (access(updpath, X_OK) == 0)
 			break;
 	}
+	updpath_t->str = updpath;
+	updpath_t->NULL;
+	free(path);
 	return (updpath);
 }
