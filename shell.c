@@ -1,6 +1,5 @@
-#include "simpleshell.h"
+B#include "simpleshell.h"
 
-char *shell = *argv[0];
 /**
  * main - function that invokes simple shell
  * @argc: number of arguments
@@ -12,27 +11,42 @@ char *shell = *argv[0];
 int main(int argc, char **argv, char **env)
 {
 	char *line = NULL;
-	buff = 0;
+	int buff = 0;
 	int status = 0;
-
+	char *updpath;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
 		write(1, "jj$", 3);
-		if (isatty(STDIN_FILENO) == 0)
-		{
-			write(1,"\n", 1);
-		break;
-		}
 		status = getline(&line, &buff, stdin);
 		if (status == -1)
 		{
-			write(1,shell,strlen(shell));
-			write(1,": File name too long". 20);
-			continue;
+			if (isatty(STDIN_FILENO) == 0)
+			{
+				write(1, shell, strlen(shell));
+				write(1, ": File name too long", 20);
+				continue;
+			}
+			if (isatty(STDIN_FILENO) == 1)
+			{
+				write(1, "\n", 1);
+				break;
+			}
+			if (line[status - 1] == '\n')
+				line[status - 1] == '\0';
+			if (*s == '\0')
+				continue;
 		}
 
-
+		if (builtin_helper(line) == -1)
+		{
+			updpath = pathfinder(line);
+			execute(updpath);
+		}
 	}
+	free_list(list_t head);
+	free(status);
+	free(updpath)
+	return (0);
 }
