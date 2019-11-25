@@ -4,9 +4,9 @@
 .SH SYNOPSIS
 .B hsh [options] [file]
 .SH DESCRIPTION
-The simple shell is a simple command interpreter for the system.  It is implemented by re-execing as bash.  This version is a simple shell that has features similar to bash.  
+The simple shell is a simple command interpreter for the system.  This version is a simple shell that has features similar to sh.
 .PP
-The simple shell is a command that reads lines from the command line.  It displays a prompt and receives a command.  It only reads one word commands with no arguments.  After a command has been executed, it displays the prompt again followed by a new line.  If an executable is not present, an error message will be printed and it displays the prompt again.
+The simple shell is a command that reads a line from the command line.  It displays a prompt and receives a command.  It reads a one word command.  After a command has been executed, it displays the prompt again followed by a new line.  If an executable is not present, an error message will be printed and it displays the prompt again.
 .SH OPTIONS
 The following are options that changes the normal simple shell environment at booting.
 .PP
@@ -26,11 +26,11 @@ restricted shell
 .RE
 .PP
 .SH INVOCATION
-In its interactive mode, the simple shell will display a prompt, handle execution and errors.  In its non-interactive mode, the simple shell will display prompt, execute a shell script and exits once executed.  In its restricted mode, the simple shell will display a prompt, handle limited commands.
+In its interactive mode, the simple shell will display a prompt, handle execution and errors.  In its non-interactive mode, the simple shell will display prompt, execute a shell script and exits once executed.  In its restricted mode, the simple shell will display a prompt but handle limited commands.
 .PP
 .SH ARGUMENTS
 .PP
-The argument(s) follows the first argument.  They are first searched in the PATH.  If found, it will read and execute the command, then exit and display the prompt again.  If not found in the PATH, the argument will be searched in the built-in.  When found, it will read and execute the command, then exit and display the prompt again.
+The argument(s) follows the single word command.  They are first searched in the PATH.  If found, it will read and execute the command, then exit and display the prompt again.  If not found in the PATH, the argument will be searched in the built-in.  When found, it will read and execute the command, then exit and display the prompt again.
 .PP
 SYNTAX: $command -arguments
 .PP
@@ -50,17 +50,20 @@ EXAMPLE: $ls -l
 - a unique identification number assigned by the kernel to every process
 .PP
 .B prompt
-- $ that displays when the simple shell is opened
+- displayed when the simple shell is booted
+.PP
+.B signals
+- a handler condition for processes;
 .PP
 .B static variable
 - a variable that's declared and initialized only once and stays the same through the end of the program
 .PP
 .SH BUILT-INS
 .B setenv
-- a built-in function that defines the value of a environment variable
+- a built-in function that defines the value of an environmental variable
 .PP
 .B unsetenv
-- a built-in function that removes a environment variable
+- a built-in function that removes an environmental variable
 .PP
 .SH ENVIRONMENTAL VARIABLES
 .B HOME
@@ -95,7 +98,7 @@ EXAMPLE: $ls -l
 .SH LISTS
 .PP
 .B ;
-- a commands separator that allows more than one command to be executed; the commands are processed in order 
+- a commands separator that allows more than one command to be executed; the commands are processed in order
 .PP
 .B &&
 - a shell logical operator that executes if both commands are true
@@ -105,7 +108,7 @@ EXAMPLE: $ls -l
 .PP
 .SH SIMPLE COMMANDS
 .B alias
--a command line argument that prints a list of aliases; an alias is a shortcut to a command
+- a command line argument that prints a list of aliases; an alias is a shortcut to a command
 .PP
 .B cd
 - a command line argument that changes the current directory
