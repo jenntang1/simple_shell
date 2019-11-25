@@ -5,11 +5,11 @@
  * @line: exit
  * Return: varies depending on check will be int
  */
-int builtin_helper(char *line)
+int builtin_helper(char *s)
 {
-	if (args[0] == "exit")
+	if (s == "exit")
 		exit(EXIT_SUCCESS);
-	if (args[0] == "env")
+	if (s == "env")
 	{
 		print_env("env");
 		return (0);

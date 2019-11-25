@@ -10,7 +10,7 @@
 int main(int argc, char **argv, char **env)
 {
 	char *prompt = "jj$";
-	
+
 	while (1)
 	{
 		write(STDOUT_FILENO, *prompt, 3);
