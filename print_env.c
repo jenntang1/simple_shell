@@ -16,13 +16,14 @@
  * @str: array of strings
  * Return: array of strings
  */
-char **_printenv(char **str)
+void **_printenv(*s)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; __environ[i] != NULL; i++)
+	while (s)
 	{
-		str[i] = __environ[i];
+		write(1, s, _strlen(s));
+		write(1, "\n", 1);
+		s =  __environ[++i];
 	}
-	return (str);
 }
