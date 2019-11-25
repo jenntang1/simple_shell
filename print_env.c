@@ -1,6 +1,6 @@
 #include "simpleshell.h"
 
-int main(void)
+/* int main(void)
 {
 	int i;
 
@@ -9,7 +9,7 @@ int main(void)
 	for (i = 0; array[i] != NULL; i++)
 		printf("%s\n", array[i]);
 	return (0);
-}
+} */
 
 /**
  * _printenv - function that prints environ
