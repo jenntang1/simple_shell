@@ -9,11 +9,10 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	pid_t child, pid;
-	int stat;
 	char *prompt = "jj$";
-
+	
 	while (1)
 	{
 		write(STDOUT_FILENO, *prompt, 3);
 	}
+}
