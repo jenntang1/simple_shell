@@ -1,8 +1,6 @@
 #ifndef SIMPLESHELL_H
 #define SIMPLESHELL_H
 
-#define BUFSIZE 1024
-
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
