@@ -2,13 +2,13 @@
 
 /**
  * builtin_helper - function that calls builtins
- * @line: exit
+ * @s: builtin commands
  * Return: varies depending on check will be int
  */
 int builtin_helper(char *s)
 {
 	if (s == "exit")
-		exit(EXIT_SUCCESS);
+		exit_helper();
 	if (s == "env")
 	{
 		print_env("env");
