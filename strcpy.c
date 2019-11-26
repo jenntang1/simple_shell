@@ -10,12 +10,17 @@
 char *_strcpy(char *dest, char *src)
 {
 	char *copy = dest;
-
-	if ((dest != '\0') && (src != '\0'))
+	if (dest == NULL)
+		return (src);
+	if (src == NULL)
+		return (dest);
+	if ((*dest != '\0') && (*src != '\0'))
 	{
 		while (*src != '\0')
 		{
-			*dest++ = *src++;
+			*dest = *src;
+			dest++;
+			src++;
 		}
 		*dest = '\0';
 	}
