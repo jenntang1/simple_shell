@@ -5,39 +5,24 @@
  * @line: command
  * Return: path of the command
  */
-char *pathfinder(char *line)
+char *pathfinder(char *cmd)
 {
 	char *path = NULL;
-	int i = 0, j = 0;
-	char **tokens;
-	char *token_paths[100];
-	char *str2 = line;
+	int j = 0, old_size = 0, new_size = 0;
+	char **token_paths;
 	char *updpath = NULL;
-	list_t *updpath_t;
 
-	updpath_t = malloc(sizeof(list_t));
-
-	if (updpath == NULL)
-		return (NULL);
 	path = _strdup(getenviron("PATH"));
-	while (token_paths[i] != NULL)
-	{
-		*tokens = strtok(path, ":");
-		token_paths[i] = *tokens;
-		i++;
-	}
-	token_paths[i] = NULL;
+	token_paths = strtok_helper(path, ":");
+	updpath = malloc(100);
 	while (token_paths[j++])
 	{
-		_strcpy(updpath, token_paths[j]);
-		_strcat(updpath, "/");
-		_strcat(updpath, str2);
-		_strcat(updpath, "\0");
+		updpath = _strcat(token_paths[j], "/");
+		updpath = _strcat(updpath, cmd);
+		updpath = _strcat(updpath, "\0");
 		if (access(updpath, X_OK) == 0)
 			break;
 	}
-	updpath_t->str = updpath;
-	updpath_t->NULL;
 	free(path);
 	return (updpath);
 }
