@@ -1,4 +1,4 @@
-B#include "simpleshell.h"
+#include "simpleshell.h"
 
 /**
  * main - function that invokes simple shell
@@ -8,17 +8,20 @@ B#include "simpleshell.h"
  * Return: 0
  */
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv, char **envp)
 {
 	char *line = NULL;
-	int buff = 0;
-	int status = 0;
+	size_t buff = 0;
 	char *updpath;
+	ssize_t status = 0;
+	char *cmd = NULL;
+	char *shell = argv[0];
+	char **tokens = NULL;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-		write(1, "jj$", 3);
+			write(1, "jj$", 3);
 		status = getline(&line, &buff, stdin);
 		if (status == -1)
 		{
@@ -35,18 +38,18 @@ int main(int argc, char **argv, char **env)
 			}
 			if (line[status - 1] == '\n')
 				line[status - 1] == '\0';
-			if (*s == '\0')
+			if (*line == '\0')
 				continue;
 		}
-
-		if (builtin_helper(line) == -1)
+		tokens = strtok_helper(line, " ,\n");
+		cmd = tokens[0];
+		updpath = pathfinder(cmd);
+		if (builtin_helper(cmd, NULL) == -1)
 		{
-			updpath = pathfinder(line);
-			execute(updpath);
+			execute(updpath, tokens, envp);
 		}
 	}
-	free_list(list_t head);
-	free(status);
-	free(updpath)
+	free(line);
+	free(tokens);
 	return (0);
 }
