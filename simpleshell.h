@@ -26,8 +26,9 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
+char **strtok_helper(char *line, char *delim);
 void free_list(list_t *head);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_realloc(char *ptr, int old_size, int new_size);
 char *_memcpy(char *dest, char *src, unsigned int n);
 
 char *_strcpy(char *dest, char *src);
@@ -36,12 +37,12 @@ char *_strdup(char *str);
 int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *s);
 
-char *pathfinder(char *line);
+char *pathfinder(char *cmd);
 char *getenviron(char *var);
 
-void **_printenv(char *s);
-void exit_helper(void);
-int builtin_helper(char *s);
-int execute(char **argv, char *line);
+void _printenv(char *s);
+void exit_helper(list_t *head);
+int builtin_helper(char *s, list_t *head);
+int execute(char *argv, char **tokens, char **__environ);
 
 #endif /* SIMPLESHELL_H */
