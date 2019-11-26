@@ -12,7 +12,7 @@ int builtin_helper(char *s, list_t *head)
 	char *ex = "exit";
 	char *en = "env";
 
-	if (_strncmp(s , ex , 6) == 0)
+	if (_strncmp(s, ex, 6) == 0)
 		exit_helper(head);
 	if (_strncmp(s, en, 5) == 0)
 	{

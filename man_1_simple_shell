@@ -32,9 +32,9 @@ In its interactive mode, the simple shell will display a prompt, handle executio
 .PP
 The argument(s) follows the single word command.  They are first searched in the PATH.  If found, it will read and execute the command, then exit and display the prompt again.  If not found in the PATH, the argument will be searched in the built-in.  When found, it will read and execute the command, then exit and display the prompt again.
 .PP
-SYNTAX: $command -arguments
+SYNTAX: jj$command -arguments
 .PP
-EXAMPLE: $ls -l
+EXAMPLE: jj$ls -l
 .PP
 .SH DEFINITIONS
 .B end-of-file (EOF)

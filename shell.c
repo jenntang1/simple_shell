@@ -8,12 +8,17 @@
  * Return: 0
  */
 
-int main(int __attribute__((unused)) argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
-	char *updpath, char *line = NULL, char *cmd = NULL, char *shell = argv[0];
+	char *updpath;
+	char *line = NULL;
+	char *cmd = NULL;
+	char *shell = argv[0];
 	size_t buff = 0;
 	ssize_t status = 0;
 	char **tokens = NULL;
+
+	(void)argc;
 
 	while (1)
 	{
