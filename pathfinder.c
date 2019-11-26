@@ -8,7 +8,7 @@
 char *pathfinder(char *cmd)
 {
 	char *path = NULL;
-	int j = 0, old_size = 0, new_size = 0;
+	int j = 0;
 	char **token_paths;
 	char *updpath = NULL;
 

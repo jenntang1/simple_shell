@@ -38,7 +38,7 @@ int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *s);
 
 char *pathfinder(char *cmd);
-char *getenviron(char *var);
+void *getenviron(char *var);
 
 void _printenv(char *s);
 void exit_helper(list_t *head);

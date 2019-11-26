@@ -25,7 +25,7 @@ int _strncmp(char *s1, char *s2, int n)
  * @var: PATH
  * Return: memory address of environ
  */
-char *getenviron(char *var)
+void *getenviron(char *var)
 {
 	int i = 0;
 
@@ -37,4 +37,5 @@ char *getenviron(char *var)
 			return (NULL);
 		i++;
 	}
+	return (NULL);
 }

@@ -11,7 +11,6 @@ int execute(char *updpath, char **tokens, char **__environ)
 {
 	pid_t child, pid;
 	int stat;
-	char *prompt = "jj$";
 
 	child = fork();
 	if (child == -1)
@@ -42,5 +41,6 @@ int execute(char *updpath, char **tokens, char **__environ)
 			}
 		} while (!WIFEXITED(stat));
 	}
+
 	return (EXIT_SUCCESS);
 }

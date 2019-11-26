@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-int main(int argc, char **argv, char **envp)
+int main(int __attribute__((unused)) argc, char **argv, char **envp)
 {
 	char *line = NULL;
 	size_t buff = 0;
@@ -36,10 +36,6 @@ int main(int argc, char **argv, char **envp)
 				write(1, "\n", 1);
 				break;
 			}
-			if (line[status - 1] == '\n')
-				line[status - 1] == '\0';
-			if (*line == '\0')
-				continue;
 		}
 		tokens = strtok_helper(line, " ,\n");
 		cmd = tokens[0];
