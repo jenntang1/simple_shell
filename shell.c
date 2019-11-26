@@ -4,18 +4,15 @@
  * main - function that invokes simple shell
  * @argc: number of arguments
  * @argv: arguments
- * @env: NULL terminated array of strings
+ * @envp: NULL terminated array of strings
  * Return: 0
  */
 
 int main(int __attribute__((unused)) argc, char **argv, char **envp)
 {
-	char *line = NULL;
+	char *updpath, char *line = NULL, char *cmd = NULL, char *shell = argv[0];
 	size_t buff = 0;
-	char *updpath;
 	ssize_t status = 0;
-	char *cmd = NULL;
-	char *shell = argv[0];
 	char **tokens = NULL;
 
 	while (1)

@@ -2,8 +2,8 @@
 
 /**
  * execute - function that executes a program
- * @argv: arguments
- * @line: command
+ * @updpath: updated path
+ * @tokens: tokens
  * @__environ: env
  * Return: 0
  */
