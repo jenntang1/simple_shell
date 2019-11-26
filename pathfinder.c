@@ -2,7 +2,7 @@
 
 /**
  * pathfinder - function that finds the path
- * @line: command
+ * @cmd: command
  * Return: path of the command
  */
 char *pathfinder(char *cmd)

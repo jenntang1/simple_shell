@@ -10,6 +10,7 @@
 char *_strcpy(char *dest, char *src)
 {
 	char *copy = dest;
+
 	if (dest == NULL)
 		return (src);
 	if (src == NULL)

@@ -3,6 +3,7 @@
 /**
  * builtin_helper - function that calls builtins
  * @s: builtin commands
+ * @head: head node
  * Return: varies depending on check will be int
  */
 int builtin_helper(char *s, list_t *head)
