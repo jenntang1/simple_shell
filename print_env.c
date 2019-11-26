@@ -5,7 +5,7 @@
  * @s: array of strings
  * Return: array of strings
  */
-void **_printenv(char *s)
+void _printenv(char *s)
 {
 	int i = 0;
 
