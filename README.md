@@ -116,7 +116,7 @@ The work flow of the simple shell relies on helper functions called in the main 
 ![flowchart](https://i.imgur.com/nSQaaQj.jpg)
 
 # Example #
-
+![ls](https://i.imgur.com/3pbwnHm.png)
 
 # Resources #
 0. man pages:  
