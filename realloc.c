@@ -28,10 +28,10 @@ char *_memcpy(char *dest, char *src, unsigned int n)
  * Description: Lookup man realloc for reference
  * Return: NULL if fail
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+char *_realloc(char *ptr, int old_size, int new_size)
 {
 	/* declare variable pointer to return */
-	void *newptr;
+	char *newptr;
 	/* call is equivalent to malloc(new_size) for values of old_size & new_size */
 	if (ptr == NULL)
 	{
