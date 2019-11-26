@@ -5,13 +5,13 @@
  * @s: builtin commands
  * Return: varies depending on check will be int
  */
-int builtin_helper(char *s)
+int builtin_helper(char *s, list_t *head)
 {
 	if (s == "exit")
-		exit_helper();
+		exit_helper(head);
 	if (s == "env")
 	{
-		print_env("env");
+		_printenv("env");
 		return (0);
 	}
 	return (-1);
