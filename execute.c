@@ -4,9 +4,10 @@
  * execute - function that executes a program
  * @argv: arguments
  * @line: command
+ * @__environ: env
  * Return: 0
  */
-int execute(char **argv, char *line)
+int execute(char *updpath, char **tokens, char **__environ)
 {
 	pid_t child, pid;
 	int stat;
@@ -20,14 +21,14 @@ int execute(char **argv, char *line)
 	}
 	if (child == 0)
 	{
-		if (execve(list_t updpath->str, *line, NULL) == -1)
+		if (execve(updpath, tokens, __environ) == -1)
 		{
 			perror("Error");
 			exit(EXIT_FAILURE);
 			return (-1);
 		}
 		else
-			execve(list_t updpath->str, *line, NULL);
+			execve(updpath, tokens, __environ);
 	}
 	else
 	{
@@ -40,7 +41,6 @@ int execute(char **argv, char *line)
 				return (-1);
 			}
 		} while (!WIFEXITED(stat));
-		exit(EXIT_SUCCESS);
 	}
 	return (EXIT_SUCCESS);
 }
