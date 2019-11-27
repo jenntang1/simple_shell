@@ -8,7 +8,6 @@
 
 void exit_helper(list_t *head)
 {
-
-	free_list(head);
+/*	free_list(head); */
 	exit(EXIT_SUCCESS);
 }
