@@ -1,7 +1,7 @@
 #include "simpleshell.h"
 /**
  * compare - tests string for /
- * @:string
+ * @string: - command passed in
  *
  * Return: int
  */

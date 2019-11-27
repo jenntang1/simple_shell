@@ -10,9 +10,7 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char *updpath;
-	char *line = NULL;
-	char *cmd = NULL;
+	char (*updpath, *line, *cmd) = NULL;
 	size_t buff = 0;
 	ssize_t status = 0;
 	char **tokens = NULL;
@@ -27,12 +25,10 @@ int main(int argc, char **argv, char **envp)
 		if (status == -1)
 		{
 			if (isatty(STDIN_FILENO) == 0)
-			{
 				break;
-			}
 			if (isatty(STDIN_FILENO) == 1)
 			{
-				write (1, "getline failed",14);
+				write(1, "getline failed", 14);
 				write(1, "\n", 1);
 				continue;
 			}
@@ -43,20 +39,13 @@ int main(int argc, char **argv, char **envp)
 		{
 			updpath = pathfinder(cmd);
 			if (builtin_helper(cmd) == -1)
-			{
 				execute(updpath, tokens, envp);
-			}
 		}
 		else if (compare(cmd) == 0)
-		{
 			execute(cmd, tokens, envp);
-		}
 		else if (compare(cmd) == 1)
-		{
 			write(1, "command not found\n", 18);
-		}
 	}
-	free(line);
-	free(tokens);
+	free(line, tokens);
 	return (0);
 }
