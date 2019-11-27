@@ -13,7 +13,6 @@ int main(int argc, char **argv, char **envp)
 	char *updpath;
 	char *line = NULL;
 	char *cmd = NULL;
-	char *shell = argv[0];
 	size_t buff = 0;
 	ssize_t status = 0;
 	char **tokens = NULL;
@@ -23,28 +22,38 @@ int main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-			write(1, "$ ", 2);
+			write(1, "JJS$ ", 5);
 		status = getline(&line, &buff, stdin);
 		if (status == -1)
 		{
 			if (isatty(STDIN_FILENO) == 0)
 			{
-				write(1, shell, strlen(shell));
-				write(1, ": File name too long", 20);
-				continue;
+				break;
 			}
 			if (isatty(STDIN_FILENO) == 1)
 			{
+				write (1, "getline failed",14);
 				write(1, "\n", 1);
-				break;
+				continue;
 			}
 		}
 		tokens = strtok_helper(line, " ,\n");
 		cmd = tokens[0];
-		updpath = pathfinder(cmd);
-		if (builtin_helper(cmd, NULL) == -1)
+		if (compare(cmd) == -1)
 		{
-			execute(updpath, tokens, envp);
+			updpath = pathfinder(cmd);
+			if (builtin_helper(cmd) == -1)
+			{
+				execute(updpath, tokens, envp);
+			}
+		}
+		else if (compare(cmd) == 0)
+		{
+			execute(cmd, tokens, envp);
+		}
+		else if (compare(cmd) == 1)
+		{
+			write(1, "command not found\n", 18);
 		}
 	}
 	free(line);

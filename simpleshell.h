@@ -15,19 +15,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-/**
- * struct list_s - single linked list
- * @str: string
- * @next: points to next node
- */
-typedef struct list_s
-{
-	char *str;
-	struct list_s *next;
-} list_t;
 
+int compare(char *string);
 char **strtok_helper(char *line, char *delim);
-void free_list(list_t *head);
 char *_realloc(char *ptr, int old_size, int new_size);
 char *_memcpy(char *dest, char *src, unsigned int n);
 
@@ -41,8 +31,7 @@ char *pathfinder(char *cmd);
 void *getenviron(char *var);
 
 void _printenv(char *s);
-void exit_helper(list_t *head);
-int builtin_helper(char *s, list_t *head);
+int builtin_helper(char *s);
 int execute(char *argv, char **tokens, char **__environ);
 
 #endif /* SIMPLESHELL_H */

@@ -6,14 +6,14 @@
  * @head: head node
  * Return: varies depending on check will be int
  */
-int builtin_helper(char *s, list_t *head)
+int builtin_helper(char *s)
 {
 
 	char *ex = "exit";
 	char *en = "env";
 
 	if (_strncmp(s, ex, 6) == 0)
-		exit_helper(head);
+		exit(EXIT_SUCCESS);
 	if (_strncmp(s, en, 5) == 0)
 	{
 		_printenv("env");
