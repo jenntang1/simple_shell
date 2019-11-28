@@ -10,12 +10,13 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char (*updpath, *line, *cmd) = NULL;
+	char *updpath = NULL, *line = NULL, *cmd = NULL;
 	size_t buff = 0;
 	ssize_t status = 0;
 	char **tokens = NULL;
 
 	(void)argc;
+	(void)argv;
 
 	while (1)
 	{
@@ -46,6 +47,7 @@ int main(int argc, char **argv, char **envp)
 		else if (compare(cmd) == 1)
 			write(1, "command not found\n", 18);
 	}
-	free(line, tokens);
+	free(line);
+	free(tokens);
 	return (0);
 }
